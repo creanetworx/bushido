@@ -239,5 +239,15 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
-
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add :label => 'Other',:priority => 14 do |submenu|
+        submenu.add :label => 'Articles',:url =>"articles"
+        submenu.add :label => 'Jobs',:url =>"jobs"
+        submenu.add :label => 'Activities',:url =>"activities"
+        submenu.add :label => 'Discounts',:url =>"discounts"
+        submenu.add :label => 'Supplies',:url =>"supplies"
+      end
+    end
+  end
 end
