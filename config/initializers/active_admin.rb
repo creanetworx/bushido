@@ -241,7 +241,7 @@ ActiveAdmin.setup do |config|
   # config.filters = true
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add :label => 'Other',:priority => 14 do |submenu|
+      menu.add :label => 'Bases',:priority => 14 do |submenu|
         submenu.add :label => 'Articles',:url =>"articles"
         submenu.add :label => 'Jobs',:url =>"jobs"
         submenu.add :label => 'Activities',:url =>"activities"
