@@ -1,5 +1,4 @@
 ActiveAdmin.register Product, { :sort_order => :name_asc } do
-
     # Scopes
     scope :all, :default => true
     scope :available do |products|
@@ -13,7 +12,7 @@ ActiveAdmin.register Product, { :sort_order => :name_asc } do
     end
 
     # Permitted parameters
-    permit_params :article_id, :title, :description, :price, :featured, :available, :image_file_name
+    permit_params :article_id, :title, :description, :price, :featured, :available, :image_file_name, :square
 
     # Displayed columns
     index do
@@ -59,11 +58,16 @@ ActiveAdmin.register Product, { :sort_order => :name_asc } do
 #           auto_link(order)
 #       end.join(content_tag("br")).html_safe
 #   end
-
+    collection_action :sold do
+      article = Article.find(params[:article_id])
+      @price = article.rub.to_i*params[:square].to_i
+      render :layout => false
+    end
     # Filters for each column within "description, image_file_name"
     filter :article,      :as => :select
     filter :title,        :as => :select               # :check_boxes (for checkboxes)
     filter :price,        :as => :select
     filter :available,    :as => :select
     filter :featured,     :as => :check_boxes
+    filter :square,       :as => :text
 end

@@ -1,5 +1,5 @@
 ActiveAdmin.register Discount, { :sort_order => :name_asc } do
-
+    menu false
     # Permitted parameters
     permit_params :discount
 

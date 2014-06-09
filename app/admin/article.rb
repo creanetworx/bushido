@@ -1,7 +1,7 @@
 ActiveAdmin.register Article, { :sort_order => :name_asc } do
-
+    menu false
     # Permitted parameters
-    permit_params :title, :description
+    permit_params :title, :description, :rub
 
     # Displayed columns
     index do
