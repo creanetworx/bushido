@@ -14,7 +14,8 @@ gem 'polyamorous', 		github: 'activerecord-hackery/polyamorous'	# Require for Ac
 gem 'ransack', 			github: 'activerecord-hackery/ransack'		# Require for ActiveAdmin to work with Rails 4.1
 gem 'formtastic', 		github: 'justinfrench/formtastic'			# Require for ActiveAdmin to work with Rails 4.1
 gem 'devise'														# Authentication
-gem "letter_opener"
+gem 'letter_opener'
+gem 'bushido_blade'		# Bushido Frontend gem 
 
 gem 'sdoc', '~> 0.4.0',	group: :doc									# bundle exec rake doc:rails generates the API under doc/api.
 
