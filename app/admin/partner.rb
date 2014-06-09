@@ -33,9 +33,6 @@ ActiveAdmin.register Partner, { :sort_order => :name_asc } do
         end
         column :address
         column :admin_user
-        column :is_new
-        column :is_current
-        column :is_denied
         actions
     end
 
