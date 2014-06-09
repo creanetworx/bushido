@@ -37,7 +37,7 @@ ActiveAdmin.register Product, { :sort_order => :name_asc } do
                 row("Article")           { link_to product.article }
                 row("Title")             { product.title }
                 row("Description")       { product.description }
-                row("Price")             { product.price }
+                row("Price")             { number_to_currency product.price, locale: :ru  }
                 row("Featured")          { product.featured }
                 row("Available on")      { product.available }
                 row("Image")             { image_tag("products/" + product.image_file_name) }

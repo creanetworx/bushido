@@ -14,12 +14,16 @@ ActiveAdmin.register Provider, { :sort_order => :name_asc } do
     selectable_column
         column :title,  :sortable => :title
         column :supply, :sortable => :supply
-        column :web_site
+        column :web_site do | website|
+          link_to website.web_site, website.web_site, :target => "_blank"
+        end
     # Phone number helper
         column :phone do |tel|
             number_to_phone tel.phone, country_code: 7, area_code: true, delimiter: "-", raise: true
         end
-        column :email
+        column :email do | mail |
+          mail_to mail.email, mail.email
+        end
         column :open_at
         column :closed_at
         column :address
@@ -33,9 +37,9 @@ ActiveAdmin.register Provider, { :sort_order => :name_asc } do
         attributes_table_for provider do
           row("Title")        { provider.title }
           row("Supply")       { link_to provider.supply.title }
-          row("Web Site")     { provider.web_site }
-          row("Phone")        { provider.phone }
-          row("Email")        { provider.email }
+          row("Web Site")     { link_to provider.web_site, provider.web_site, :target => "_blank" }
+          row("Phone")        { number_to_phone provider.phone, country_code: 7, area_code: true, delimiter: "-", raise: true}
+          row("Email")        { mail_to provider.email, provider.email }
           row("Open Hours")   { provider.open_at }
           row("Closed Hours") { provider.closed_at }
           row("Address")      { provider.address }
