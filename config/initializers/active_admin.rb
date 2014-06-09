@@ -242,11 +242,11 @@ ActiveAdmin.setup do |config|
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
       menu.add :label => 'Other',:priority => 14 do |submenu|
-        submenu.add :label => 'Articles',:url =>"articles"
-        submenu.add :label => 'Jobs',:url =>"jobs"
-        submenu.add :label => 'Activities',:url =>"activities"
-        submenu.add :label => 'Discounts',:url =>"discounts"
-        submenu.add :label => 'Supplies',:url =>"supplies"
+        submenu.add :label => 'Articles',:url =>"/admin/articles"
+        submenu.add :label => 'Jobs',:url =>"/admin/jobs"
+        submenu.add :label => 'Activities',:url =>"/admin/activities"
+        submenu.add :label => 'Discounts',:url =>"/admin/discounts"
+        submenu.add :label => 'Supplies',:url =>"/admin/supplies"
       end
     end
   end
