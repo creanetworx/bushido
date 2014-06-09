@@ -31,6 +31,20 @@ ActiveAdmin.register Staff, { :sort_order => :name_asc } do
         column :finish_at
         actions
     end
+    show do
+      panel "Staff Details" do
+        attributes_table_for staff do
+          row("First Name")   { staff.first_name }
+          row("last_name")    { staff.last_name }
+          row("middle_name")  { staff.middle_name }
+          row("job")          { staff.job  }
+          row("Phone")        { number_to_phone staff.phone, country_code: 7, area_code: true, delimiter: "-", raise: true }
+          row("Pay")          { number_to_currency staff.pay, locale: :ru }
+          row("Start At")     { staff.start_at }
+          row("Finish At")    { staff.finish_at }
+        end
+      end
+    end
 
     # Filters for each column within "middle_name, phone"
     filter :first_name,  :as => :select               # :check_boxes (for checkboxes)

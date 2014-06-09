@@ -31,10 +31,28 @@ ActiveAdmin.register Customer, { :sort_order => :name_asc } do
         column :phone do |tel|
             number_to_phone tel.phone, country_code: 7, area_code: true, delimiter: "-", raise: true
         end
-        column :email
+        column :email do |mail|
+          mail_to mail.email, mail.email
+        end
         column :car
-        column :discount
+        column :discount do | dis |
+          "#{dis.discount} %"
+        end 
         actions
+    end
+
+    show do
+      panel "Customer Details" do
+        attributes_table_for customer do
+          row("First Name")   { customer.first_name }
+          row("Last Name")    { customer.last_name }
+          row("Middle Name")  { customer.middle_name }
+          row("Phone")        { number_to_phone customer.phone, country_code: 7, area_code: true, delimiter: "-", raise: true}
+          row("Email")        { mail_to customer.email, customer.email }
+          row("Car")          { customer.car }
+          row("Discount")     { "#{customer.discount} %" }
+        end
+      end
     end
 
     # Filters for each column within "phone"

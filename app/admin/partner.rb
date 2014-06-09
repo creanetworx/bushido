@@ -20,13 +20,17 @@ ActiveAdmin.register Partner, { :sort_order => :name_asc } do
     selectable_column
         column :title,    :sortable => :title
         column :activity, :sortable => :activity
-        column :web_site
+        column :web_site do | website|
+          link_to website.web_site, website.web_site, :target => "_blank"
+        end
         column :contact
     # Phone number helper
         column :phone do |tel|
-            number_to_phone tel.phone, country_code: 7, area_code: true, delimiter: "-", raise: true
+          number_to_phone tel.phone, country_code: 7, area_code: true, delimiter: "-", raise: true
         end
-        column :email
+        column :email do |mail|
+          mail_to mail.email, mail.email
+        end
         column :address
         column :admin_user
         column :is_new
@@ -37,21 +41,21 @@ ActiveAdmin.register Partner, { :sort_order => :name_asc } do
 
     # Provider details
     show do
-        panel "Partner Details" do
-            attributes_table_for partner do
-                row("Title")             { partner.title }
-                row("Type of Activity")  { link_to partner.activity }
-                row("Web Site")          { partner.web_site }
-                row("Contact Person")    { partner.contact }
-                row("Phone")             { partner.phone }
-                row("Email")             { partner.email }
-                row("Address")           { partner.address }
-                row("Admin User")        { link_to partner.admin_user }
-                row("New Partner")       { status_tag (partner.is_new ? "New" : "Pending"), (partner.is_new ? :ok : :error) }
-                row("Current Partner")   { status_tag (partner.is_current ? "Current" : "Pending"), (partner.is_current ? :ok : :error) }
-                row("Denied Partner")    { status_tag (partner.is_denied ? "Denied" : "Pending"), (partner.is_denied ? :ok : :error) }
-            end
+      panel "Partner Details" do
+        attributes_table_for partner do
+          row("Title")             { partner.title }
+          row("Type of Activity")  { link_to partner.activity }
+          row("Web Site")          { link_to partner.web_site, partner.web_site, :target => "_blank" }
+          row("Contact Person")    { partner.contact }
+          row("Phone")             { number_to_phone partner.phone, country_code: 7, area_code: true, delimiter: "-", raise: true }
+          row("Email")             { mail_to partner.email, partner.email }
+          row("Address")           { partner.address }
+          row("Admin User")        { link_to partner.admin_user }
+          row("New Partner")       { status_tag (partner.is_new ? "New" : "Pending"), (partner.is_new ? :ok : :error) }
+          row("Current Partner")   { status_tag (partner.is_current ? "Current" : "Pending"), (partner.is_current ? :ok : :error) }
+          row("Denied Partner")    { status_tag (partner.is_denied ? "Denied" : "Pending"), (partner.is_denied ? :ok : :error) }
         end
+      end
     end
 
     # Filters for each column within "web_site, phone, address"
