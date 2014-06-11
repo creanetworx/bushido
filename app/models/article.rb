@@ -8,6 +8,6 @@ class Article < ActiveRecord::Base
 
 	# Define for display a article for products as article code
     def to_s
-  		"#{title}"
+      "#{title}"
   	end
 end
