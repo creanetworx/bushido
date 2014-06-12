@@ -5,6 +5,7 @@ ActiveAdmin.register Article, { :sort_order => :name_asc } do
 
     # Displayed columns
     index do
+        debugger
     selectable_column
         column :title
         column :description

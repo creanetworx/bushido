@@ -75,6 +75,20 @@ ActiveAdmin.register Product, { :sort_order => :name_asc } do
       render :layout => false
     end
 
+    collection_action :cart do
+      @cart = current_admin_user.cart
+      @customers = Customer.all
+      @staffs = Staff.all
+      @discounts = Discount.all
+    end
+
+    collection_action :update_cart,:method=> :post do
+      @cart = current_admin_user.cart
+      params.permit!
+      @cart.update_attributes(params[:cart])
+      redirect_to admin_products_url,:notice=>"Cart has been updated."
+    end
+
     # Filters for each column within "description, image_file_name"
     filter :article,      :as => :select
     filter :type,         :as => :select
