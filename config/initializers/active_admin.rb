@@ -248,6 +248,7 @@ ActiveAdmin.setup do |config|
         submenu.add :label => 'Discounts',:url =>"/admin/discounts"
         submenu.add :label => 'Supplies',:url =>"/admin/supplies"
       end
+      menu.add :label => 'Cart',url: "/admin/cart"
     end
   end
 end

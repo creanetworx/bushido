@@ -1,0 +1,32 @@
+<%= form_for(@cart,:url=>admin_update_cart_path, :method => :post, :html=>{:class=>"formtastic product"}) do |f| %>
+<h4>Cart Detail </h4>
+<fieldset class="inputs">
+	<ol>
+		<li id="product_article_input" class="select input required"><label for="product_article_id" class="label">Discount</label>
+		<% unless @discounts.blank? %>
+			<%= f.select(:discount_id,options_for_select(@discounts.map{|dis| [dis.discount,dis.id]}))%>
+		<% end%>
+		</li>
+		<li id="product_article_input" class="select input required"><label for="product_article_id" class="label">Staff</label>
+		<% unless @staffs.blank?%>
+			<%= f.select(:staff_id,options_for_select(@staffs.map{|staff| [staff.first_name,staff.id]}))%>
+		<%end%>
+		</li>
+		<li id="product_article_input" class="select input required"><label for="product_article_id" class="label">Customer</label>
+		<% unless @customers.blank?%>
+			<%= f.select(:customer_id,options_for_select(@customers.map{|customer| [customer.first_name,customer.id]}))%>
+		<% end%>
+		</li>
+	</ol>
+</fieldset>
+<fieldset class="actions">
+	<ol>
+		<li id="product_submit_action" class="action input_action ">
+			<%= f.submit "Checkout" %>
+		</li>
+		<li class="cancel">
+			<a href="/admin/products">Cancel</a>
+		</li>
+	</ol>
+</fieldset>
+<% end %>
