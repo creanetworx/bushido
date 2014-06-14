@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606135353) do
+ActiveRecord::Schema.define(version: 20140610203810) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -59,6 +59,38 @@ ActiveRecord::Schema.define(version: 20140606135353) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "rub"
+  end
+
+  create_table "assigns", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "staff_id"
+    t.integer  "discount_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bucket_products", force: true do |t|
+    t.integer  "bucket_id"
+    t.string   "bucket_type"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "staff_id"
+    t.integer  "admin_user_id"
+    t.integer  "discount_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "customers", force: true do |t|
@@ -118,6 +150,7 @@ ActiveRecord::Schema.define(version: 20140606135353) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "square"
+    t.integer  "type_id"
   end
 
   add_index "products", ["article_id"], name: "index_products_on_article_id"
@@ -156,6 +189,13 @@ ActiveRecord::Schema.define(version: 20140606135353) do
   create_table "supplies", force: true do |t|
     t.string   "title"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "types", force: true do |t|
+    t.string   "name"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

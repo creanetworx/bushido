@@ -8,7 +8,7 @@ gem 'uglifier', '>= 1.3.0' 											# Use Uglifier as compressor for JavaScrip
 gem 'coffee-rails', '~> 4.0.0' 										# Use CoffeeScript for .js.coffee assets and views
 gem 'jquery-rails' 													# Use jquery as the JavaScript library
 gem 'turbolinks' 													# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'jbuilder', '~> 2.0' 											# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.0'             								# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'activeadmin', 		github: 'gregbell/active_admin'				# ActiveAdmin backend framework for Rails administration interface
 gem 'polyamorous', 		github: 'activerecord-hackery/polyamorous'	# Require for ActiveAdmin to work with Rails 4.1
 gem 'ransack', 			github: 'activerecord-hackery/ransack'		# Require for ActiveAdmin to work with Rails 4.1
@@ -32,5 +32,5 @@ gem 'spring',        	group: :development 						# Spring speeds up development b
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
-
+gem 'debugger', group: [:development, :test]
+gem 'therubyracer', group: [:development, :test]

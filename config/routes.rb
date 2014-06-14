@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   #     end
   #   end
   get 'admin/products/sold' => 'admin/products#sold', as: :sold
+  get 'admin/products/:id/add_to_cart' => 'admin/products#add_to_cart', as: :add_to_cart
+  get 'admin/cart'=>'admin/products#cart'
+  post '/admin/update_cart'=>'admin/products#update_cart'
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

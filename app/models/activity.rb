@@ -8,6 +8,6 @@ class Activity < ActiveRecord::Base
 
 	# Define for display a type of activity for partners as title of activity type
     def to_s
-  		"#{title}"
+  	  "#{title}"
   	end
 end

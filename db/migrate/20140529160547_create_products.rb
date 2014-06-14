@@ -8,7 +8,6 @@ class CreateProducts < ActiveRecord::Migration
       t.boolean :featured
       t.date :available
       t.string :image_file_name
-
       t.timestamps
     end
   end
